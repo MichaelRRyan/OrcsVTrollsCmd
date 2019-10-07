@@ -7,6 +7,7 @@
 /// </summary>
 
 #include <iostream>
+#include <string>
 #include "Character.h"
 #include "Orc.h"
 #include "Troll.h"
@@ -19,13 +20,14 @@ public:
 	
 protected:
 	void gameLoop();
-	void getInput();
+	bool getInput(const std::string t_inputMessage, const int t_inputRange);
 
 	// --------------------------- VARIABLES ---------------------------
 	bool m_gamePlaying;
 	int m_input;
 
 	// --------------------------- OBJECTS ---------------------------
+	Character *m_player;
 	Orc m_orc;
 	Troll m_troll;
 };

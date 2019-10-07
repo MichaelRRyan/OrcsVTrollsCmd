@@ -20,6 +20,7 @@ Game::Game() :
 /// </summary>
 void Game::startGame()
 {
+	m_gamePlaying = true;
 	//std::cout << "Let go virtual" << std::endl;
 	///*Character character;
 	//character.flip();
@@ -53,12 +54,24 @@ void Game::startGame()
 	//std::cout << "Troll" << std::endl;
 	//npc->printStats();
 
+	while (!getInput("Choose your race:\n1 = Orc\n2 = Troll\n", 2));
+	{
+		if (m_input == 1)
+		{
+			m_player = &m_orc;
+			std::cout << "You chose orc" << std::endl;
+			system("pause");
+		}
+		else if (m_input == 2)
+		{
+			m_player = &m_troll;
+			std::cout << "You chose troll" << std::endl;
+			system("pause");
+		}
+	} 
 
-
-	m_gamePlaying = true;
+	
 	gameLoop();
-
-	system("pause");
 }
 
 /// <summary>
@@ -69,17 +82,29 @@ void Game::gameLoop()
 {
 	while (m_gamePlaying)
 	{
-		getInput();
+		system("cls");
+		getInput("Enter a number: ", 0);
+		if (m_input == 0)
+		{
+			m_gamePlaying = false;
+		}
 	}
 }
 
 /// <summary>
-/// Takes input from the player.
-/// <para>Disgregards the input if it is not a valid input.</para>
+/// Takes player inputs and returns true if done so successfully.
+/// <para>Displays an error message and returns false if:</para> 
+/// <para>- The player enters a string or character.</para>
+/// <para>- The player enters a number less than 0 or outside the range.</para>
+/// <para>Ends the game loop if the input is 0.</para>
 /// </summary>
-void Game::getInput()
+/// <param name="t_inputMessage">Message to display for input</param>
+/// <param name="t_inputRange">The range of values that can be entered</param>
+/// <returns>Whether the input was taken successfully</returns>
+bool Game::getInput(const std::string t_inputMessage, const int t_inputRange)
 {
-	std::cout << "Enter 0 to exit game: ";
+	std::cout << "Entering 0 at any point will exit the game." << std::endl;
+	std::cout << t_inputMessage;
 	std::cin >> m_input;
 
 	if (std::cin.fail())
@@ -87,9 +112,24 @@ void Game::getInput()
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << "Unrecognised input type." << std::endl;
+		system("pause");
+		system("cls");
+		return false;
+	}
+	else if (m_input < 0 || m_input > t_inputRange)
+	{
+		std::cout << "Value outside of range. Enter a value within the range 0 to " << t_inputRange << "." << std::endl;
+		system("pause");
+		system("cls");
+		return false;
 	}
 	else if (m_input == 0)
 	{
+		system("cls");
+		std::cout << "Goodbye!" << std::endl;
 		m_gamePlaying = false;
+		system("pause");
 	}
+
+	return true;
 }
