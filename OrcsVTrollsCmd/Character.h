@@ -25,6 +25,7 @@ public:
 
 protected:
 	Stats m_stats;
+	int m_health;
 };
 
 #endif // !CHARACTER_H

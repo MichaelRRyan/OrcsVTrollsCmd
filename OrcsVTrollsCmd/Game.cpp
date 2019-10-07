@@ -59,12 +59,14 @@ void Game::startGame()
 		if (m_input == 1)
 		{
 			m_player = &m_orc;
+			m_enemy = &m_troll;
 			std::cout << "You chose orc" << std::endl;
 			system("pause");
 		}
 		else if (m_input == 2)
 		{
 			m_player = &m_troll;
+			m_enemy = &m_orc;
 			std::cout << "You chose troll" << std::endl;
 			system("pause");
 		}
@@ -82,12 +84,15 @@ void Game::gameLoop()
 {
 	while (m_gamePlaying)
 	{
+		// Exit game option
 		system("cls");
 		getInput("Enter a number: ", 0);
 		if (m_input == 0)
 		{
 			m_gamePlaying = false;
 		}
+
+		combat();
 	}
 }
 
@@ -132,4 +137,9 @@ bool Game::getInput(const std::string t_inputMessage, const int t_inputRange)
 	}
 
 	return true;
+}
+
+void Game::combat()
+{
+	getInput("Enter a number: ", 0);
 }

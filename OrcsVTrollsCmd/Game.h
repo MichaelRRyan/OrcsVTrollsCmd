@@ -15,19 +15,23 @@
 class Game
 {
 public:
+	// ---------------------- PRUBLIC FUNCTIONS ----------------------
 	Game();
 	void startGame();
 	
 protected:
+	// --------------------- PROTECTED FUNCTIONS ---------------------
 	void gameLoop();
 	bool getInput(const std::string t_inputMessage, const int t_inputRange);
+	void combat();
 
-	// --------------------------- VARIABLES ---------------------------
+	// -------------------------- VARIABLES --------------------------
 	bool m_gamePlaying;
 	int m_input;
 
 	// --------------------------- OBJECTS ---------------------------
 	Character *m_player;
+	Character *m_enemy;
 	Orc m_orc;
 	Troll m_troll;
 };
