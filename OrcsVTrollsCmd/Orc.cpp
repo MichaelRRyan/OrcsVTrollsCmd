@@ -7,6 +7,12 @@
 
 Orc::Orc()
 {
+	setStats();
+	m_race = "Orc";
+}
+
+void Orc::setStats()
+{
 	m_stats.m_strength = rand() % 7 + 6;
 	m_stats.m_dexterity = rand() % 11 + 10;
 	m_stats.m_constitution = rand() % 7 + 6;

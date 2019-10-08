@@ -8,6 +8,13 @@
 
 #include <iostream>
 
+enum class Attack
+{
+	Magic,
+	Melee,
+	Defence
+};
+
 struct Stats
 {
 	int m_strength; // Used for melee attack damage
@@ -18,14 +25,18 @@ struct Stats
 
 class Character {
 public:
-	void flip() { std::cout << "I know how to flip and I will flipping do it" << std::endl; }
-	virtual void walk() { std::cout << "just in case they are too young to walk yet" << std::endl; }
-	virtual void fly() = 0; //pure virtual function
+	int attack(Attack t_attack);
+	int getHealth();
+	void damage(int t_damage);
+	int takePotion();
 	void printStats();
+	inline std::string getRace() { return m_race; }
+	virtual void setStats() = 0;
 
 protected:
 	Stats m_stats;
 	int m_health;
+	std::string m_race;
 };
 
 #endif // !CHARACTER_H

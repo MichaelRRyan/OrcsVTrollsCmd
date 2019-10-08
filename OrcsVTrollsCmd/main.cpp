@@ -9,7 +9,10 @@
 
 int main()
 {
+	// Set the seed for randomisation
 	srand(static_cast<unsigned>(time(nullptr)));
+
+	// Create an object for the game and start
 	Game game;
 	game.startGame();
 

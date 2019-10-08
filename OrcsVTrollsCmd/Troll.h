@@ -11,7 +11,7 @@
 class Troll : public Character {
 public:
 	Troll();
-	void fly() { std::cout << "Average Dooper is flapping and flying" << std::endl; }
+	void setStats();
 };
 
 #endif // !TROLL_H
