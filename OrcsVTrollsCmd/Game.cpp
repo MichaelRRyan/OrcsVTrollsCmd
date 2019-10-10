@@ -425,8 +425,16 @@ void Game::update()
 	{
 		system("cls");
 		std::cout << "You have slain the enemy!" << std::endl;
+
+		// Give the player some money
+		int moneyEarned = rand() % 21 + 10;
+		std::cout << "You earned " << moneyEarned << " gold!" << std::endl;
+		m_playerGear.m_gold += moneyEarned;
+
+		// Restore player health
 		m_player->restoreHealth();
 		std::cout << "Your health has been restored" << std::endl;
+
 		system("pause");
 		m_enemy->setStats(); // Reset the enemy
 
