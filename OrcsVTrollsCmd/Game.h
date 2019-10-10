@@ -11,16 +11,21 @@
 #include "Character.h"
 #include "Orc.h"
 #include "Troll.h"
+#include "Item.h"
 
 // Set the const here so that <Windows.h> doesn't interfere
 const unsigned long CIN_LIMIT = static_cast<unsigned long>(std::numeric_limits<std::streamsize>::max());
 
 #include <Windows.h>
 
-struct Items
+struct PlayerGear
 {
-	int potions;
-	int gold;
+	static const int MAX_ITEMS{ 10 };
+
+	int m_potions;
+	int m_gold;
+	Item* m_inventory[MAX_ITEMS];
+	Item** m_Equiped; // Equiped item
 };
 
 class Game
@@ -36,8 +41,15 @@ protected:
 	bool getInput(const std::string t_inputMessage, const int t_inputRange);
 	void pickRace();
 	void combat();
+	void meleeAttack(Attack t_enemyAttack);
+	void magicAttack(Attack t_enemyAttack);
+	void counterAttack(Attack t_enemyAttack);
 	void displayCombatStats();
+	void displayShopStats();
 	void update();
+	void shop();
+	bool checkForWeapon(ItemType t_attackType);
+	bool hasNoWeapons();
 
 	COORD GetConsoleCursorPosition(HANDLE hConsoleOutput);
 
@@ -51,7 +63,10 @@ protected:
 	Orc m_orc;
 	Troll m_troll;
 
-	Items m_playersItems;
+	PlayerGear m_playerGear;
+
+	std::string m_shopText;
+	int m_roundNumber;
 
 	// For changing font colour 
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

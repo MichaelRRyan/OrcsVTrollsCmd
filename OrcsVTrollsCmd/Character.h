@@ -29,6 +29,7 @@ public:
 	int getHealth();
 	void damage(int t_damage);
 	int takePotion();
+	void restoreHealth();
 	void printStats();
 	inline std::string getRace() { return m_race; }
 	virtual void setStats() = 0;

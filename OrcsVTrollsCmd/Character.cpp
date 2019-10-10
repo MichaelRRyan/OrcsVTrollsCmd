@@ -67,6 +67,12 @@ int Character::takePotion()
 	return m_health - previousHealth; // Minus the previous health from the current to get the amount healed
 }
 
+// Restores the character's health to full
+void Character::restoreHealth()
+{
+	m_health = m_stats.m_constitution;
+}
+
 /// <summary>
 /// Prints out the character's stats
 /// </summary>

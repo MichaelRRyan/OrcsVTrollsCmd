@@ -2,6 +2,8 @@
 /// @Author Michael Rainsford Ryan
 /// @Date 01/10/2019
 /// @Time 12:32
+/// Estimated time 10h
+/// Time taken: 11h
 /// </summary>
 
 #include <ctime>
