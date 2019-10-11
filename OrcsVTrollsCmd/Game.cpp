@@ -68,6 +68,7 @@ void Game::startGame()
 	system("cls");
 
 	pickRace();
+	if (m_input == 0) return;
 	shop();
 	system("cls");
 	std::cout << "Get ready, people! Round " << m_roundNumber << " is about to start!" << std::endl;
