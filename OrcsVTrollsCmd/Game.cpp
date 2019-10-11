@@ -70,6 +70,7 @@ void Game::startGame()
 	pickRace();
 	if (m_input == 0) return;
 	shop();
+	if (m_input == 0) return;
 	system("cls");
 	std::cout << "Get ready, people! Round " << m_roundNumber << " is about to start!" << std::endl;
 	system("pause");
@@ -87,6 +88,7 @@ void Game::gameLoop()
 		// Exit game option
 		system("cls");
 		combat();
+		if (m_input == 0) return;
 		update();
 	}
 }
@@ -356,8 +358,6 @@ void Game::displayCombatStats()
 	SetConsoleCursorPosition(hConsole, { 60, 3 }); // Set the cursor position
 	std::cout << "Potions: " << m_playerGear.m_potions << "\t|"; // Output the player's potions
 
-	
-
 	SetConsoleCursorPosition(hConsole, lastCursorPosition); // Set the cursor back to the previous position
 }
 
@@ -472,6 +472,8 @@ void Game::shop()
 		// Take player input and display the shop menu
 		if (getInput(m_shopText, NO_OF_ITEMS + 2)) // If the player enters a valid input
 		{
+			if (m_input == 0) return;
+
 			if (m_input == 1)
 			{
 				if (hasNoWeapons())
