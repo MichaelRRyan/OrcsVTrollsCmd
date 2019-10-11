@@ -42,8 +42,15 @@ int Character::getHealth()
 /// <param name="t_damage"></param>
 void Character::damage(int t_damage)
 {
-	m_health -= t_damage;
-
+	if (t_damage <= 0)
+	{
+		m_health -= 1;
+	}
+	else
+	{
+		m_health -= t_damage;
+	}
+	
 	if (m_health < 0)
 	{
 		m_health = 0;

@@ -49,7 +49,7 @@ Game::Game() :
 void Game::startGame()
 {
 	// Setup the player
-	m_playerGear.m_gold = 30;
+	m_playerGear.m_gold = 110;
 	m_playerGear.m_potions = 3;
 	m_playerGear.m_Equiped = nullptr;
 
@@ -234,6 +234,7 @@ void Game::meleeAttack(Attack t_enemyAttack)
 			}
 
 			m_player->damage(damageDone);
+			if (damageDone <= 0) damageDone = 1;
 			std::cout << "You took " << damageDone << " damage." << std::endl;
 		}
 		else
@@ -279,6 +280,7 @@ void Game::magicAttack(Attack t_enemyAttack)
 			}
 
 			m_player->damage(damageDone);
+			if (damageDone <= 0) damageDone = 1;
 			std::cout << "You took " << damageDone << " damage." << std::endl;
 		}
 		else
@@ -324,6 +326,7 @@ void Game::counterAttack(Attack t_enemyAttack)
 			}
 
 			m_player->damage(damageDone);
+			if (damageDone <= 0) damageDone = 1;
 			std::cout << "You took " << damageDone << " damage." << std::endl;
 		}
 		else
@@ -486,7 +489,7 @@ void Game::shop()
 					std::cout << "Come again when you want more goods!" << std::endl;
 				}
 			}
-			else if (m_input < 16)
+			else if (m_input < 17)
 			{
 				// Work out the item price based on its damage and check if the player has enough gold for it
 				if (m_playerGear.m_gold >= (ITEM_DAMAGES[m_input - 2] * 10))
