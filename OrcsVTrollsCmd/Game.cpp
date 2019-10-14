@@ -49,7 +49,7 @@ Game::Game() :
 void Game::startGame()
 {
 	// Setup the player
-	m_playerGear.m_gold = 110;
+	m_playerGear.m_gold = 30;
 	m_playerGear.m_potions = 3;
 	m_playerGear.m_Equiped = nullptr;
 
@@ -441,6 +441,7 @@ void Game::update()
 
 		system("pause");
 		m_enemy->setStats(); // Reset the enemy
+		m_enemy->increaseStats(m_roundNumber);
 
 		system("cls");
 		while (!getInput("Do you want to visit the shop, or keep fighting?\n1 = Visit Shop\n2 = Enter the next battle!\n", 2));

@@ -33,6 +33,7 @@ public:
 	void printStats();
 	inline std::string getRace() { return m_race; }
 	virtual void setStats() = 0;
+	void increaseStats(int t_roundNum);
 
 protected:
 	Stats m_stats;

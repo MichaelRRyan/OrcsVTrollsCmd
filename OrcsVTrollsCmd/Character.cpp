@@ -90,3 +90,13 @@ void Character::printStats()
 	std::cout << "CON: " << m_stats.m_constitution << std::endl;
 	std::cout << "WIS: " << m_stats.m_wisdom << std::endl;
 }
+
+void Character::increaseStats(int t_roundNum)
+{
+	m_stats.m_strength = m_stats.m_strength + rand() % (t_roundNum + 1);
+	m_stats.m_dexterity = m_stats.m_dexterity + rand() % (t_roundNum + 1);
+	m_stats.m_constitution = m_stats.m_constitution + rand() % (t_roundNum + 1);
+	m_stats.m_wisdom = m_stats.m_wisdom + rand() % (t_roundNum + 1);
+
+	m_health = m_stats.m_constitution;
+}
